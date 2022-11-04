@@ -7,15 +7,17 @@ import { useForm } from '../../hooks';
 import { startGoogleSignIn, startLoginWithEmailPassword } from '../../store/auth';
 import { useMemo } from 'react';
 
+const formData = {
+  email: '',
+  password: ''
+}
+
 export const LoginPage = () => {
 
   const dispatch = useDispatch()
   const { status, errorMessage } = useSelector(state => state.auth)
 
-  const { onInputChange, email, password, formState } = useForm({
-    email: '',
-    password: ''
-  })
+  const { onInputChange, email, password, formState } = useForm(formData)
 
   const isAuthenticating = useMemo(() => status === 'checking', [status])
 
@@ -31,7 +33,8 @@ export const LoginPage = () => {
   return (
 
     <AuthLayout title='Login'>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} className='animate__animated animate__fadeIn animate__faster'
+      >
         <Grid container>
           <Grid item xs={12} sx={{ mt: 2 }}>
             <TextField

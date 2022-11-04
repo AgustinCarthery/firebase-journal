@@ -10,6 +10,7 @@ export const AuthLayout = ({ children, title = '' }) => {
       alignItems='center'
       justifyContent='center'
       sx={{ minHeight: '100vh', backgroundColor: 'primary.main', padding: 4 }}
+      className='animate__animated animate__fadeIn animate__faster'
     >
       <Grid
         item
